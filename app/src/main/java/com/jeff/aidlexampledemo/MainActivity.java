@@ -41,9 +41,9 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int x = Integer.parseInt(etX.getText().toString());
-                int y = Integer.parseInt(etY.getText().toString());
-                if (TextUtils.isEmpty(etX.getText().toString())&& TextUtils.isEmpty(etY.getText().toString())) {
+                if (!TextUtils.isEmpty(etX.getText()) && !TextUtils.isEmpty(etY.getText())) {
+                    int x = Integer.parseInt(etX.getText().toString());
+                    int y = Integer.parseInt(etY.getText().toString());
                     int result = 0;
                     try {
                         result = mService.add(x, y);

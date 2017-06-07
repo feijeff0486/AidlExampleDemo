@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int x = Integer.parseInt(etX.getText().toString());
-                int y = Integer.parseInt(etY.getText().toString());
-                if (etX.getText()!=null && etY.getText()!= null) {
+                if (!TextUtils.isEmpty(etX.getText()) && !TextUtils.isEmpty(etY.getText())) {
+                    int x = Integer.parseInt(etX.getText().toString());
+                    int y = Integer.parseInt(etY.getText().toString());
                     int result = 0;
                     try {
                         result = mService.add(x, y);
